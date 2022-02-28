@@ -1,0 +1,191 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Create Form</title>
+        <style>
+* {
+  box-sizing: border-box;
+}
+body{
+    background: url('lit5.jpg'); 
+  background-size: cover;
+}
+.createfo{
+    margin-left: 8rem;
+    margin-right: 8rem;
+    background-color: rgba(85, 71, 58, 0.534);
+    margin-bottom: 3rem;
+    box-shadow: 10px 10px 5px black;
+    border-radius: 5%;
+}
+.increfo{
+    margin: 1.5rem;
+}
+.white-btn {
+  padding: 0.625rem 1.875rem;
+  line-height: 25px;
+  background-color: darkorange;
+  border: 0.1875rem solid darkorange;
+  color: whitesmoke;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  box-shadow: 0px 2px 10px -1px rgb(0 0 0 / 19%);
+  -webkit-transition: all .4s ease-out 0s;
+  -o-transition: all .4s ease-out 0s;
+  -moz-transition: all .4s ease-out 0s;
+  transition: all .4s ease-out 0s;
+}
+.main-btn:hover {
+  background-color: transparent;
+  color: orange;
+}
+
+.white-btn:hover {
+  background-color: transparent;
+  color: orange;
+  border-color: orange;
+}
+
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  resize: vertical;
+}
+
+label {
+  padding: 12px 12px 12px 0;
+  display: inline-block;
+}
+
+input[type=submit] {
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  float: right;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+
+.container {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+.col-25 {
+  float: left;
+  width: 25%;
+  margin-top: 6px;
+}
+
+.col-75 {
+  float: left;
+  width: 75%;
+  margin-top: 6px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .col-25, .col-75, input[type=submit] {
+    width: 100%;
+    margin-top: 0;
+  }
+}
+</style>
+    </h:head>
+    <h:body>
+        <h1 style="text-align: center; padding:20px;">Register a Hotel</h1>
+        <h:form id="stock-form" class="createfo">
+		<h:message for="stock-form" class="error" />
+                <div class="increfo" style="padding-top: 1.2rem;">
+                    <h2 style="color: whitesmoke;">Id</h2>
+                        <h:inputText id="idn" style="background-color: wheat;" value="#{Resto.restau.id}"
+				required="true" requiredMessage="Value is required"
+				validatorMessage="Id must begin with Resto- and five digits">
+				<f:validateRegex pattern="HT-[0-9]{5}" />
+			</h:inputText>
+			<br />
+			<h:message for="idn" class="error" />
+		</div>
+		<div class="increfo">
+                   <h2 style="color: whitesmoke;"> Hotel Name</h2>
+                        <h:inputText id="name" style="background-color: wheat;" value="#{Resto.restau.rname}"
+				required="true" requiredMessage="Value is required"
+				validatorMessage=" Restaurant Name contains invalid characters">
+				<f:validateRegex pattern="[A-Za-z]+" />
+			</h:inputText>
+			<br />
+			<h:message for="name" class="error" />
+		</div>
+		<div class="increfo">
+                    <h2 style="color: whitesmoke;">Address</h2>
+			<h:inputText style="background-color: wheat;" id="Address"
+                                     value="#{Resto.restau.address}" required="true"
+				requiredMessage="Value is required"  />
+			<br />
+		</div>
+		<div class="increfo">
+                    <h2 style="color: whitesmoke;">Zip Code</h2>
+			<h:inputText style="background-color: wheat;" id="zipcode"
+                                     value="#{Resto.restau.zipCode}" required="true"
+				requiredMessage="Value is required" />
+			<br />
+		</div>
+
+		<div class="increfo">
+                    <h2 style="color: whitesmoke;">Phone Number</h2>
+			<h:inputText style="background-color: wheat;" id="phonenumber"
+                                     value="#{Resto.restau.phonneNumber}"
+				required="true" requiredMessage="Value is required"
+				validatorMessage=" Enter Valid Phone number">
+			</h:inputText>
+			<br />
+			<h:message for="phonenumber" class="error" />
+		</div>
+		<div class="increfo">
+                    <h2 style="color: whitesmoke;">Website</h2>
+			<h:inputText style="background-color: wheat;" id="website"
+                                     value="#{Resto.restau.website}"
+				required="true" requiredMessage="Value is required"
+				>
+			</h:inputText>
+			<br />
+			<h:message for="website" class="error" />
+		</div>
+                <div class="increfo">
+                    <h2 style="color: whitesmoke;">Email</h2>
+                    <h:inputText style="background-color: wheat;" id="email" value="#{Resto.restau.email}"
+				required="true" requiredMessage="Value is required"
+				validatorMessage="Enter Valid Email with @ in it">
+				<f:validateRegex pattern="[\w\.-]*[a-zA-Z0-9_]@[\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]" />
+                        </h:inputText>
+			<br />
+			<h:message for="number" class="error" />
+		</div>
+                <div>
+                <div style="padding: 2rem; display:inline-block;">
+                    <h:commandButton style="background-color: darkorange;" action="#{Resto.create()}" value="Register" />
+                </div>
+                </div>
+	</h:form>
+    </h:body>
+</html>
+

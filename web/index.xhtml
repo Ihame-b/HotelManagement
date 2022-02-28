@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>List of Hotels</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous"></link>
+        <style>
+            *{
+                background-color: lemonchiffon;
+            }
+        </style>
+    </h:head>
+    <h:body style="background-color: lightgray;">
+        <h1 style="text-align: center; padding:20px;  ">List of Hotels</h1>	
+        <h:dataTable id="tbl" class="table table-secondary" var="re" value="#{Resto.allRestaurant}" style="padding: 30px; margin-top: 50px;" >
+		<h:column>
+                    <f:facet name="header" class="table-warning">Id</f:facet>
+                    <h:outputText value="#{re.id}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Hotel Name</f:facet>
+                        <h:outputText value="#{re.rname}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Address</f:facet>
+                        <h:outputText value="#{re.address}" />
+		</h:column>
+		<h:column>
+			<f:facet name="header">Zip Code</f:facet>
+                        <h:outputText value="#{re.zipCode}" />
+		</h:column>
+                <h:column>
+			<f:facet name="header">Phone Number</f:facet>
+                        <h:outputText value="#{re.phonneNumber}" />
+		</h:column>
+                <h:column>
+			<f:facet name="header">Website</f:facet>
+                        <h:outputText value="#{re.website}" />
+		</h:column>
+            <h:column>
+			<f:facet name="header">Email</f:facet>
+                        <h:outputText value="#{re.email}" />
+		</h:column>
+            <h:column>
+			<f:facet name="header">Delete</f:facet>
+                        <h:form>
+                            <h:commandButton action="#{Resto.deleteResto(re.id)}" value="Delete">
+                                <f:ajax event="keyup" listener="#{Resto.deleteResto(re.id)}" render="tbl"/>
+                            </h:commandButton>  
+                        </h:form>
+                        
+		</h:column>
+             <h:column>
+			<f:facet name="header">Edit</f:facet>
+                        <h:form>
+                            <h:commandButton action="#{Resto.handleUpdate(re)}" value="Update"/>
+                        </h:form>
+                        
+		</h:column>
+	</h:dataTable>
+        <h:form class="d-grid gap-2 col-6 mx-auto">
+            <h:commandButton action="CreateForm.xhtml" class="btn btn-dark" style="font-weight: 25px;" value=" Add New Hotel" />    
+        </h:form>
+      
+    </h:body>
+</html>
+
